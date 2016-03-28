@@ -100,13 +100,24 @@ public class NewsDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
     }
 
-    @Override
+    /*@Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(NewsDBHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NEWS);
         onCreate(db);
+    }*/
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if(newVersion > oldVersion) {
+            try {
+                copyDataBase();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -123,21 +134,21 @@ public class NewsDBHelper extends SQLiteOpenHelper {
      * @return all records in the table news
      */
     public List<News> selectRecords() {
-        Cursor cursor = myDataBase.rawQuery("SELECT * FROM news ORDER BY date DESC", null);
+        Cursor cursor = myDataBase.rawQuery("SELECT * FROM " + TABLE_NEWS + " ORDER BY date DESC", null);
         List<News> newsList = new ArrayList<>();
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 News news = new News();
-                news.setId(Integer.parseInt(cursor.getString(0)));
-                news.setTitle(cursor.getString(1));
-                news.setContent(cursor.getString(2));
-                news.setAuthor(cursor.getString(3));
-                news.setDate(cursor.getString(4));
-                news.setCategory(Integer.parseInt(cursor.getString(5)));
-                news.setMedia_type(Integer.parseInt(cursor.getString(6)));
-                news.setMedia_path(cursor.getString(7));
+                news.setId(Integer.parseInt(cursor.getString(7)));
+                news.setTitle(cursor.getString(0));
+                news.setContent(cursor.getString(1));
+                news.setAuthor(cursor.getString(2));
+                news.setDate(cursor.getString(3));
+                news.setCategory(Integer.parseInt(cursor.getString(4)));
+                news.setMedia_type(Integer.parseInt(cursor.getString(5)));
+                news.setMedia_path(cursor.getString(6));
                 // Adding new to list
                 newsList.add(news);
             } while (cursor.moveToNext());
