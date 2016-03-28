@@ -5,12 +5,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import polynews.polytech.unice.fr.polynews.R;
 
 /**
- * Created by gabriela on 15/03/16.
+ * @version 15/03/16.
  */
 public class PlaceholderFragment extends Fragment {
     /**

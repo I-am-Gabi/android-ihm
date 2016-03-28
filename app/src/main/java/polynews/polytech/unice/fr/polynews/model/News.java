@@ -5,7 +5,7 @@ package polynews.polytech.unice.fr.polynews.model;
  * @author Gabriela Cavalcante
  * @version 28/03/16.
  */
-public class New {
+public class News {
     private int id;
     private String title;
     private String content;
@@ -15,14 +15,15 @@ public class New {
     private int media_type;
     private String media_path;
 
-    public New() {
+    public News() {
     }
 
-    public New(int id, String title, String content, String author, int category, int media_type, String media_path) {
+    public News(int id, String title, String content, String author, String data, int category, int media_type, String media_path) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;
+        this.date = data;
         this.category = category;
         this.media_type = media_type;
         this.media_path = media_path;
@@ -61,11 +62,11 @@ public class New {
     }
 
     public String getDate() {
-        return author;
+        return date;
     }
 
-    public void setDate(String author) {
-        this.author = author;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getCategory() {

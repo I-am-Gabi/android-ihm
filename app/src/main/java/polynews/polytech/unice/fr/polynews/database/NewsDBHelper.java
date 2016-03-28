@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,19 +16,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import polynews.polytech.unice.fr.polynews.model.New;
+import polynews.polytech.unice.fr.polynews.model.News;
 
+/**
+ * @see <a href="http://www.vogella.com/tutorials/AndroidSQLite/article.html">Android SQLite database and content provider - Tutorial</a>
+ * @see <a href="http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/">Android SQLite Database Tutorial</a>
+ */
 public class NewsDBHelper extends SQLiteOpenHelper {
-
+    public static final String TAG = "MyActivity";
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
     private static final String DATABASE_NAME = "polynews_database";
-    // New table name
+    // News table name
     private static final String TABLE_NEWS = "news";
     // Database path
-    private static final String DATABASE_PATH = "src/main/assets/";
-
+    private static final String DATABASE_PATH = "/data/data/polynews.polytech.unice.fr.polynews/databases/";
 
     private SQLiteDatabase myDataBase;
     private final Context myContext;
@@ -57,7 +61,7 @@ public class NewsDBHelper extends SQLiteOpenHelper {
             String myPath = DATABASE_PATH + DATABASE_NAME;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
         } catch(SQLiteException e){
-            //database doesn't exist yet.
+            Log.e(TAG, "Database doesn't exist");
         }
         if(checkDB != null){
             checkDB.close();
@@ -65,13 +69,13 @@ public class NewsDBHelper extends SQLiteOpenHelper {
         return checkDB != null;
     }
 
-    private void copyDataBase() throws IOException{
+    private void copyDataBase() throws IOException {
         InputStream myInput = myContext.getAssets().open(DATABASE_NAME);
         String outFileName = DATABASE_PATH + DATABASE_NAME;
         OutputStream myOutput = new FileOutputStream(outFileName);
         byte[] buffer = new byte[1024];
         int length;
-        while ((length = myInput.read(buffer))>0){
+        while ((length = myInput.read(buffer)) > 0){
             myOutput.write(buffer, 0, length);
         }
         myOutput.flush();
@@ -116,17 +120,16 @@ public class NewsDBHelper extends SQLiteOpenHelper {
      * Move the cursor to the next row.
      * This method will return false if the cursor is already past the
      * last entry in the result set.
-     * @param db The database.
      * @return all records in the table news
      */
-    public List<New> selectRecords(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery("SELECT * FROM news ORDER BY date DESC", null);
-        List<New> newsList = new ArrayList<>();
+    public List<News> selectRecords() {
+        Cursor cursor = myDataBase.rawQuery("SELECT * FROM news ORDER BY date DESC", null);
+        List<News> newsList = new ArrayList<>();
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                New news = new New();
+                News news = new News();
                 news.setId(Integer.parseInt(cursor.getString(0)));
                 news.setTitle(cursor.getString(1));
                 news.setContent(cursor.getString(2));
