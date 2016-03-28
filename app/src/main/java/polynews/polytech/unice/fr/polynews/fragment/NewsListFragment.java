@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -42,8 +43,8 @@ public class NewsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_news_list, container, false);
-        TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format_news, getArguments().getInt(ARG_SECTION_NUMBER)));
+        //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+        //textView.setText(getString(R.string.section_format_news, getArguments().getInt(ARG_SECTION_NUMBER)));
         return rootView;
     }
 
@@ -60,5 +61,8 @@ public class NewsListFragment extends Fragment {
 
         List<News> newsList = dbHelper.selectRecords();
         NewsCustomAdapter adapter = new NewsCustomAdapter(getActivity(), newsList);
+
+        GridView grid = (GridView) getView().findViewById(R.id.gridView);
+        grid.setAdapter(adapter);
     }
 }

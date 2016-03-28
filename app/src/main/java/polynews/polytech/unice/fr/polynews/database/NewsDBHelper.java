@@ -19,8 +19,15 @@ import java.util.List;
 import polynews.polytech.unice.fr.polynews.model.News;
 
 /**
- * @see <a href="http://www.vogella.com/tutorials/AndroidSQLite/article.html">Android SQLite database and content provider - Tutorial</a>
- * @see <a href="http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/">Android SQLite Database Tutorial</a>
+ * @see <a href="http://stackoverflow.com/questions/24634116/caused-by-android-database-sqlite-sqliteexception-no-such-table-code-1-andr>
+ *     Caused by: android.database.sqlite.SQLiteException: no such table: (code 1) Android
+ *     </a>
+ * @see <a href="http://www.vogella.com/tutorials/AndroidSQLite/article.html">
+ *     Android SQLite database and content provider - Tutorial
+ *     </a>
+ * @see <a href="http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/">
+ *     Android SQLite Database Tutorial
+ *     </a>
  */
 public class NewsDBHelper extends SQLiteOpenHelper {
     public static final String TAG = "MyActivity";
