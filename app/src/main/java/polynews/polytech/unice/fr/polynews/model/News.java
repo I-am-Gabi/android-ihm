@@ -18,17 +18,6 @@ public class News {
     public News() {
     }
 
-    public News(int id, String title, String content, String author, String data, int category, int media_type, String media_path) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.author = author;
-        this.date = data;
-        this.category = category;
-        this.media_type = media_type;
-        this.media_path = media_path;
-    }
-
     public int getId() {
         return id;
     }
@@ -53,32 +42,16 @@ public class News {
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getDate() {
-        return date;
     }
 
     public void setDate(String date) {
         this.date = date;
     }
 
-    public int getCategory() {
-        return category;
-    }
-
     public void setCategory(int category) {
         this.category = category;
-    }
-
-    public int getMedia_type() {
-        return media_type;
     }
 
     public void setMedia_type(int media_type) {

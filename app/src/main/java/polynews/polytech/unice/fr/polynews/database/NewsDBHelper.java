@@ -91,7 +91,7 @@ public class NewsDBHelper extends SQLiteOpenHelper {
     }
 
     public void openDataBase() throws SQLException {
-        //Open the database
+        // Open the database
         String myPath = DATABASE_PATH + DATABASE_NAME;
         myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
     }
@@ -106,15 +106,6 @@ public class NewsDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
     }
-
-    /*@Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(NewsDBHelper.class.getName(),
-                "Upgrading database from version " + oldVersion + " to "
-                        + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NEWS);
-        onCreate(db);
-    }*/
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -162,7 +153,7 @@ public class NewsDBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-
+        myDataBase.close();
         return newsList;
     }
 }

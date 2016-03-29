@@ -43,8 +43,6 @@ public class NewsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_news_list, container, false);
-        //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        //textView.setText(getString(R.string.section_format_news, getArguments().getInt(ARG_SECTION_NUMBER)));
         return rootView;
     }
 

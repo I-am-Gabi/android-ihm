@@ -1,6 +1,8 @@
 package polynews.polytech.unice.fr.polynews.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import polynews.polytech.unice.fr.polynews.R;
+import polynews.polytech.unice.fr.polynews.activity.DownloadPictures;
 import polynews.polytech.unice.fr.polynews.model.News;
 
 /**
@@ -29,7 +32,6 @@ public class NewsCustomAdapter extends ArrayAdapter<News> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE );
         if (convertView == null)
             convertView = inflater.inflate(R.layout.fragment_new, null);
@@ -39,10 +41,13 @@ public class NewsCustomAdapter extends ArrayAdapter<News> {
 
         // image new
         ImageView imageView = (ImageView)convertView.findViewById(R.id.icon);
-        imageView.setImageResource(R.drawable.icon);
+        DownloadPictures task = new DownloadPictures(imageView, getContext());
+        task.execute(news.getMedia_path());
+
         // content new
         TextView contentView = (TextView)convertView.findViewById(R.id.contentNew);
         contentView.setText(news.getContent());
+
         // title new
         TextView titleView = (TextView)convertView.findViewById(R.id.titleNew);
         titleView.setText(news.getTitle());
