@@ -41,6 +41,7 @@ public class NewsCustomAdapter extends ArrayAdapter<News> {
 
         // image new
         ImageView imageView = (ImageView)convertView.findViewById(R.id.icon);
+        // imageView.setImageResource(R.drawable.icon);
         DownloadPictures task = new DownloadPictures(imageView, getContext());
         task.execute(news.getMedia_path());
 

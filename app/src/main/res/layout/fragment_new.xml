@@ -9,9 +9,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:maxWidth="82dp"
+        android:maxHeight="82dp"
+        android:scaleType="fitCenter"
         android:layout_marginRight="@dimen/layout_marginRight"
         />
-
     <TextView
         android:id="@+id/contentNew"
         android:layout_width="fill_parent"
