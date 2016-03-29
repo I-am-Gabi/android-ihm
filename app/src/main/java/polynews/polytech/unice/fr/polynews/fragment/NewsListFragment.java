@@ -18,6 +18,12 @@ import polynews.polytech.unice.fr.polynews.database.NewsDBHelper;
 import polynews.polytech.unice.fr.polynews.model.News;
 
 /**
+ * @see <a href="http://developer.android.com/reference/android/app/Fragment.html#onCreate(android.os.Bundle)">
+ *      Fragment
+ *      </a>
+ *      <a href="http://stackoverflow.com/questions/28929637/difference-and-uses-of-oncreate-oncreateview-and-onactivitycreated-in-fra">
+ *      Difference and uses of onCreate(), onCreateView() and onActivityCreated() in fragments
+ *      </a>
  * @version 15/03/16.
  */
 public class NewsListFragment extends Fragment {
