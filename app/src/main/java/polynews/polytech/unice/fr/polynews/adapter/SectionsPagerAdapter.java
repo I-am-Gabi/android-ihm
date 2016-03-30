@@ -4,10 +4,8 @@ import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 
 /**
- * Created by gabriela on 15/03/16.
+ * @version 15/03/16.
  */
 public class SectionsPagerAdapter {
     LayoutInflater layout;
-
-
 }

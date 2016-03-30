@@ -18,6 +18,9 @@ import android.view.View;
 import polynews.polytech.unice.fr.polynews.fragment.NewsListFragment;
 import polynews.polytech.unice.fr.polynews.fragment.PlaceholderFragment;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -35,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    /**
+     * Initialize the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,13 +64,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Unavailable Service", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

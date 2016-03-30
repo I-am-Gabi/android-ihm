@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="layout_marginRight">6dp</dimen>
+    <dimen name="textContentSize">12sp</dimen>
 </resources>
